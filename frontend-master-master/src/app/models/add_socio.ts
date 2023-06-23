@@ -1,5 +1,5 @@
 export class Add_Socio {
-
+//socio
     _id?: number;
     username: string;
     email:string;
