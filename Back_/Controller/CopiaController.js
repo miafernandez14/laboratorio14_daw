@@ -1,12 +1,10 @@
 
 const Copia = require("../Models/Copia");
 const Pelicula = require("../Models/Peliculas");
-
+//crear copia 
 exports.crearCopia = async (req, res) => {
     try {
-      const { pelicula, id_cinta } = req.body;
-  
-      
+      const { pelicula, id_cinta } = req.body; 
       const copia = new Copia({
         pelicula,
         id_cinta
