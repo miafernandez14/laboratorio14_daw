@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="prestamos-done.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Document</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h2>Formulario</h2>
+          <form #copiaForm="ngForm" (ngSubmit)="crearCopia(copiaForm)">
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="fechaPrestamo" placeholder="Enter your Fecha Prestamo"
+                [(ngModel)]="copiaService.selectedCopia.pelicula" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="fechaDevolucion" placeholder="Enter your Fecha Devolucion"
+                [(ngModel)]="copiaService.selectedCopia.id_cinta" required>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" class="form-control" name="entregado" placeholder="Enter your Entregado"
+                [(ngModel)]="copiaService.selectedCopia.disponible" required>
+            </div>
+            <div>
+              <button class="btn btn-primary mr-2" (click)="resetForm(copiaForm)">
+                Clean
+              </button>
+              <button class="btn btn-secondary" type="submit">
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center">Pelicula</th>
+            <th class="text-center">Id_cinta</th>
+            <th class="text-center">Disponible</th>
+            <th class="text-center">Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let copia of copiaService.copia">
+            <td>{{ copia.pelicula }}</td>
+            <td>{{ copia.id_cinta }}</td>
+            <td>{{ copia.disponible }}</td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="eliminarCopia(copia._id)">
+                <i class="material-icons">delete</i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
