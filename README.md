@@ -1,2 +1,0 @@
-# laboratorio14_daw
-
