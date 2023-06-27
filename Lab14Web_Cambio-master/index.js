@@ -17,7 +17,6 @@ app.use('/api/peliculas', verifyToken, require('./routes/pelicula'));
 app.use('/api/socios', verifyToken, require('./routes/socio'));
 app.use('/api/prestamos',verifyToken,  require('./routes/prestamo'));
 app.use('/api/copias', verifyToken, require('./routes/copia'));
-app.use('/api/user', require('./routes/user'));
 app.use('/api/pdf', verifyToken, require('./routes/pdf'));
 
 
