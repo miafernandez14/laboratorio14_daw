@@ -1,4 +1,9 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
+
+
+
 
 // const SocioSchema = mongoose.Schema({
     
@@ -25,7 +30,15 @@ const mongoose = require('mongoose');
 // });
 
 const SocioSchema = new mongoose.Schema({
-    nombre: {
+    username: {
+      type: String,
+      required: true
+    },
+    email:{
+      type: String,
+      required: true
+    },
+    password: {
       type: String,
       required: true
     },
@@ -55,7 +68,20 @@ const SocioSchema = new mongoose.Schema({
     },
     prestamo: [{
         type: mongoose.Schema.Types.ObjectId,
-      ref: 'Prestamo'
+        ref: 'Prestamo',
+        default: []
     }]
   });
+
+
+SocioSchema.methods.encryptPassword = async (password) => {
+  const salt = await bcrypt.genSalt(10);
+  return bcrypt.hash(password, salt)
+};
+
+
+SocioSchema.methods.validatePassword = function (password) {
+  return bcrypt.compare(password, this.password);
+}
+
 module.exports = mongoose.model('Socio',SocioSchema)
