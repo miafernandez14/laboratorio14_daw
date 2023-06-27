@@ -25,7 +25,7 @@ exports.generarPDf = async(req,res) =>{
         });
 
       
-        // Tabla de peliculas
+        // Tabla de peliculass
         doc.setFontSize(15);
         doc.autoTable({
         theme: 'grid',
