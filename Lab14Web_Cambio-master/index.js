@@ -13,11 +13,11 @@ app.use(cors())
 app.use(express.json());
 
 
-app.use('/api/peliculas', verifyToken, require('./routes/pelicula'));
-app.use('/api/socios', verifyToken, require('./routes/socio'));
-app.use('/api/prestamos',verifyToken,  require('./routes/prestamo'));
-app.use('/api/copias', verifyToken, require('./routes/copia'));
-app.use('/api/pdf', verifyToken, require('./routes/pdf'));
+app.use('/api/peliculas', require('./routes/pelicula'));
+app.use('/api/socios', 	 require('./routes/socio'));
+app.use('/api/prestamos', require('./routes/prestamo'));
+app.use('/api/copias',  require('./routes/copia'));
+app.use('/api/pdf', require('./routes/pdf'));
 
 
 
