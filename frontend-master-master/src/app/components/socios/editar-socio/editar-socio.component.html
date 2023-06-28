@@ -1,0 +1,85 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h2>Formulario</h2>
+          <form [formGroup]="socioForm" (ngSubmit)="editarSocio()">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" formControlName="username"
+                    class="form-control" placeholder="Ingresar Username">
+                <div class="text-danger"
+                    *ngIf="socioForm.get('username')?.hasError('required') && socioForm.get('username')?.touched">
+                    <span>El Username <strong>es obligatorio</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" formControlName="email" 
+                    class="form-control" placeholder="Ingresar Email">
+                <div class="text-danger"
+                    *ngIf="socioForm.get('email')?.hasError('required') && socioForm.get('email')?.touched">
+                    <span>El Email <strong>es obligatoria</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Direccion</label>
+                <input type="text" formControlName="direccion" 
+                    class="form-control" placeholder="Ingresar Direccion">
+                <div class="text-danger"
+                    *ngIf="socioForm.get('direccion')?.hasError('required') && socioForm.get('direccion')?.touched">
+                    <span>La Direccion <strong>es obligatoria</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Telefono</label>
+                <input type="number" formControlName="telefono" 
+                    class="form-control" placeholder="Ingresar Telefono">
+                <div class="text-danger"
+                    *ngIf="socioForm.get('telefono')?.hasError('required') && socioForm.get('telefono')?.touched">
+                    <span>El Telefono <strong>es obligatorio</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Director Favorito</label>
+                <input type="text" formControlName="directorFavorito" 
+                    class="form-control" placeholder="Ingresar Director Favorito">
+                <div class="text-danger"
+                    *ngIf="socioForm.get('directorFavorito')?.hasError('required') && socioForm.get('directorFavorito')?.touched">
+                    <span>El Director Favorito <strong>es obligatorio</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Actor Favorito</label>
+                <input type="text" formControlName="actorFavorito" 
+                    class="form-control" placeholder="Ingresar Actor Favorito">
+                <div class="text-danger"
+                    *ngIf="socioForm.get('actorFavorito')?.hasError('required') && socioForm.get('actorFavorito')?.touched">
+                    <span>El Actor Favorito <strong>es obligatorio</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Genero Preferido</label>
+                <input type="text" formControlName="generoPreferido" 
+                    class="form-control" placeholder="Ingresar Genero Preferido">
+                <div class="text-danger"
+                    *ngIf="socioForm.get('generoPreferido')?.hasError('required') && socioForm.get('generoPreferido')?.touched">
+                    <span>El Genero Preferido <strong>es obligatorio</strong></span>
+                </div>
+            </div>
+            
+            <div  class="col-sm-12 text-right">
+                <div class="panel-body buttons-margin">
+                   <button type="submit" [disabled]="socioForm.invalid" class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
+                   <button class="btn btn-w-md btn-warning" routerLink="/socios">Cancelar</button>
+                </div>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

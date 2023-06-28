@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <br>
+        <div class="card">
+            <div class="card-header">
+                SignUp
+            </div>
+            <div class="card-body">
+                <form [formGroup]="registerForm" (ngSubmit)="agregarUser()">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label>Username</label>
+                            <input type="text" value="" id="username" formControlName="username" class="form-control" name="">
+                            <span class="help-block small">Ingrese su usuario</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Password</label>
+                            <input type="password" value="" id="password" formControlName="password" class="form-control" name="">
+                            <span class="help-block small">Ingrese su contraseña</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Repeat Password</label>
+                            <input type="password" value="" id="repeatpassword" formControlName="repeatpassword" class="form-control" name="">
+                            <span class="help-block small">Por favor repita su contraseña</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Email Address</label>
+                            <input type="email" value="" id="email" class="form-control" formControlName="email" name="">
+                            <span class="help-block small">Ingrese su correo de contacto</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Direccion</label>
+                            <input type="text" value="" id="direccion" formControlName="direccion" class="form-control" name="">
+                            <span class="help-block small">Ingrese direccion</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Telefono</label>
+                            <input type="number" value="" id="telefono" class="form-control" formControlName="telefono" name="">
+                            <span class="help-block small">Ingrese su telefono</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Director Favorito</label>
+                            <input type="text" value="" id="directorFavorito" formControlName="directorFavorito" class="form-control" name="">
+                            <span class="help-block small">Ingrese su Director Favorito</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Actor Favorito</label>
+                            <input type="text" value="" id="actorFavorito" class="form-control" formControlName="actorFavorito" name="">
+                            <span class="help-block small">Ingrese su Actor Favorito</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Genero Preferido</label>
+                            <input type="text" value="" id="generoPreferido" formControlName="generoPreferido" class="form-control" name="">
+                            <span class="help-block small">Ingrese su Genero Preferido</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-accent" type="submit">Guardar</button>
+                        <a class="btn btn-default" routerLink="/">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

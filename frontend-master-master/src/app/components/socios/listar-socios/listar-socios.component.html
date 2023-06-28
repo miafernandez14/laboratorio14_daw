@@ -1,0 +1,49 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+        <table *ngIf="listSocios.length > 0" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Fecha Creación</th>
+                    <th>Director Favorito</th>
+                    <th>Actor Favorito</th>
+                    <th>Genero Preferido</th>
+                    <th>Prestamos </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="datos">
+                <tr *ngFor="let socio of listSocios">
+                    <td>{{ socio.username }}</td>
+                    <td>{{ socio.email }}</td>
+                    <td>{{ socio.direccion }}</td>
+                    <td>{{ socio.telefono }}</td>
+                    <td>{{ socio.fechaCreacion }}</td>
+                    <td>{{ socio.directorFavorito }}</td>
+                    <td>{{ socio.actorFavorito }}</td>
+                    <td>{{ socio.generoPreferido }}</td>
+                    <td>
+                        <ng-container *ngIf="socio.prestamo && socio.prestamo.length > 0; else noPrestamos">
+                            {{ socio.prestamo.join(', ') }}
+                        </ng-container>
+                        <ng-template #noPrestamos>
+                          No hay Prestamos
+                        </ng-template>
+                      </td>
+
+                    <td>
+                        <button (click)="eliminarSocio(socio._id)" style="font-size: 25px;" class="btn btn-w-md btn-warning">Eliminar</button>&nbsp;&nbsp;
+                        <button [routerLink]="['/socios', socio._id]" style="font-size: 25px;" class="btn btn-w-md btn-success">Actualizar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+

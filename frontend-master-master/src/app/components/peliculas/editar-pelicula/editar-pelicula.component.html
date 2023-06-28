@@ -1,0 +1,56 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h2>Formulario</h2>
+          <form [formGroup]="peliculaForm" (ngSubmit)="editarPelicula()">
+            <div class="form-group">
+                <label>Titulo</label>
+                <input type="text" formControlName="titulo"
+                    class="form-control" placeholder="Ingresar Titulo">
+                <div class="text-danger"
+                    *ngIf="peliculaForm.get('titulo')?.hasError('required') && peliculaForm.get('titulo')?.touched">
+                    <span>El titulo <strong>es obligatorio</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Genero</label>
+                <input type="text" formControlName="genero" 
+                    class="form-control" placeholder="Ingresar Genero">
+                <div class="text-danger"
+                    *ngIf="peliculaForm.get('genero')?.hasError('required') && peliculaForm.get('genero')?.touched">
+                    <span>El Genero <strong>es obligatoria</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Director</label>
+                <input type="text" formControlName="director" 
+                    class="form-control" placeholder="Ingresar Director">
+                <div class="text-danger"
+                    *ngIf="peliculaForm.get('director')?.hasError('required') && peliculaForm.get('director')?.touched">
+                    <span>El director <strong>es obligatoria</strong></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Actores</label>
+                <input type="text" formControlName="actores" 
+                    class="form-control" placeholder="Ingresar Actores">
+                <div class="text-danger"
+                    *ngIf="peliculaForm.get('actores')?.hasError('required') && peliculaForm.get('actores')?.touched">
+                    <span>Los Actores <strong>son obligatorio</strong></span>
+                </div>
+            </div>
+            <div  class="col-sm-12 text-right">
+                <div class="panel-body buttons-margin">
+                   <button type="submit" [disabled]="peliculaForm.invalid" class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
+                   <button class="btn btn-w-md btn-warning" routerLink="/peliculas">Cancelar</button>
+                </div>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

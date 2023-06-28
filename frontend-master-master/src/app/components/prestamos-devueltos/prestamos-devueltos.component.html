@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="prestamos-devueltos.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Document</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <table *ngIf="listPrestamos.length > 0" class="table table-striped">
+        <thead>
+            <tr>
+                <th >Socio</th>
+                <th >Copia</th>
+                <th >Fecha de Prestamo</th>
+                <th >Fecha de Devolucion</th>
+                <th >Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="datos">
+            <tr *ngFor="let prestamo of listPrestamos">
+              <ng-container *ngIf="prestamo.entregado">
+                  <td>{{ prestamo.socio }}</td>
+                  <td>{{ prestamo.copia }}</td>
+                  <td>{{ prestamo.fechaPrestamo }}</td>
+                  <td>{{ prestamo.fechaDevolucion }}</td>
+                  <td>
+                    <button (click)="eliminarPrestamoHecho(prestamo._id)" style="font-size: 25px;" class="btn btn-w-md btn-warning">Eliminar</button>&nbsp;&nbsp;
+                  </td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

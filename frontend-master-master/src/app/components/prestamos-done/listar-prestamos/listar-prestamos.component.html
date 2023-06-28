@@ -1,0 +1,89 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h2>Formulario</h2>
+            <form [formGroup]="prestamoForm" (ngSubmit)="agregarPrestamo()">
+              <div class="form-group">
+                  <label>Socio</label>
+                  
+                  <select class="form-control" formControlName="socio" [(ngModel)]="id_socio">
+                    <option value="" selected disabled>Seleccionar</option>
+                    <option value="{{item._id}}" *ngFor="let item of listSocios">{{item.username}}</option>
+                  </select>
+
+
+                  <div class="text-danger"
+                      *ngIf="prestamoForm.get('socio')?.hasError('required') && prestamoForm.get('socio')?.touched">
+                      <span>El Socio <strong>es obligatorio</strong></span>
+                  </div>
+              </div>
+
+
+              <div class="form-group">
+                  <label>Copia</label>
+                  <select class="form-control" formControlName="copia" [(ngModel)]="id_copia">
+                    <option value="" selected disabled>Seleccionar</option>
+                    <ng-container *ngFor="let item of listCopias">
+                      <option value="{{item._id}}" *ngIf="item.disponible">
+                        {{item.id_cinta}}
+                      </option>
+                    </ng-container>
+                  </select>
+                  
+                  <div class="text-danger"
+                      *ngIf="prestamoForm.get('copia')?.hasError('required') && prestamoForm.get('copia')?.touched">
+                      <span>La Copia <strong>es obligatoria</strong></span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label>Fecha Devolucion</label>
+                  <input type="date" formControlName="fechaDevolucion" 
+                      class="form-control" placeholder="Ingresar Fecha de Devolucion">
+                  <div class="text-danger"
+                      *ngIf="prestamoForm.get('fechaDevolucion')?.hasError('required') && prestamoForm.get('fechaDevolucion')?.touched">
+                      <span>La Fecha de Devolucion <strong>es obligatorio</strong></span>
+                  </div>
+              </div>
+              <div  class="col-sm-12 text-right">
+                  <div class="panel-body buttons-margin">
+                     <button type="submit" [disabled]="prestamoForm.invalid" class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
+                  </div>
+              </div>
+          </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+          <table *ngIf="listPrestamos.length > 0" class="table table-striped">
+              <thead>
+                  <tr>
+                      <th >Socio</th>
+                      <th >Copia</th>
+                      <th >Fecha de Prestamo</th>
+                      <th >Fecha de Devolucion</th>
+                      <th >Acciones</th>
+                  </tr>
+              </thead>
+              <tbody id="datos">
+                  <tr *ngFor="let prestamo of listPrestamos">
+                    <ng-container *ngIf="!prestamo.entregado">
+                        <td>{{ prestamo.socio }}</td>
+                        <td>{{ prestamo.copia }}</td>
+                        <td>{{ prestamo.fechaPrestamo }}</td>
+                        <td>{{ prestamo.fechaDevolucion }}</td>
+                        <td>
+                          <button (click)="devolverPrestamo(prestamo._id)" style="font-size: 25px;" class="btn btn-w-md btn-warning">Devolver</button>&nbsp;&nbsp;
+                        </td>
+                      </ng-container>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  
+  
