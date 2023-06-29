@@ -84,8 +84,8 @@
                     <!-- <td>{{ pelicula.copias ? obtenerIdsCinta(pelicula.copias).join(', ') : "No hay Copias" }}</td> -->
 
                     <td>
-                        <button (click)="eliminarPelicula(pelicula._id)" style="font-size: 25px;" class="btn btn-w-md btn-warning">Eliminar</button>&nbsp;&nbsp;
-                        <button [routerLink]="['/peliculas', pelicula._id]" style="font-size: 25px;" class="btn btn-w-md btn-success">Editar</button>
+                        <button (click)="eliminarPelicula(pelicula._id)" style="font-size: 10px;" class="btn btn-outline-danger">Eliminar</button>&nbsp;&nbsp;
+                        <button [routerLink]="['/peliculas', pelicula._id]" style="font-size: 10px;" class="btn btn-outline-success">Editar</button>
                     </td>
                 </tr>
             </tbody>
