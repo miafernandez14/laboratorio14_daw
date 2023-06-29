@@ -8,7 +8,7 @@ import { Pelicula } from '../models/pelicula';
 })
 export class PeliculaService {
   url = 'http://localhost:3000/api/peliculas/';
-
+  pdf = 'http://localhost:3000/api/pdf/'
 
   constructor(private http: HttpClient) { 
 
@@ -16,7 +16,11 @@ export class PeliculaService {
 
   crearPelicula(pelicula:Pelicula): Observable<any>{
     return this.http.post(this.url,pelicula);
-   }
+  }
+  
+  getPDF(): Observable<any> {
+    return this.http.get(this.pdf, { responseType: 'blob' })
+  }
   
   obtenerPeliculas(): Observable<any>{
     return this.http.get(this.url);

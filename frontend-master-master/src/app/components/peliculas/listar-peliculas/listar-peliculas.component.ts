@@ -1,8 +1,10 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Pelicula } from 'src/app/models/pelicula';
 import { PeliculaService } from 'src/app/services/pelicula.service';
+import { PfdServicesService } from 'src/app/services/pfd-services.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,6 +19,7 @@ export class ListarPeliculasComponent implements OnInit {
 
 
   peliculaForm: FormGroup;
+  private _pelicula: any;
   
   constructor(private fb: FormBuilder,
               private _peliculaService: PeliculaService,
@@ -40,6 +43,28 @@ export class ListarPeliculasComponent implements OnInit {
       this.listPeliculas = data;
       this.elementos = this.listPeliculas.length;
     })
+  }
+
+  generarPDF(){
+    
+    this._peliculaService.getPDF().subscribe(response => {
+      const file = new Blob([response], { type: 'application/pdf' });
+
+      const url = URL.createObjectURL(file);
+      window.open(url)
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'reporte.pdf';
+
+      document.body.appendChild(a);
+      a.click();
+
+      URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+
+    },)
+    
   }
   obtenerIdsCinta(copias: any[]): string[] {
     return copias.map(copia => copia.id_cinta);

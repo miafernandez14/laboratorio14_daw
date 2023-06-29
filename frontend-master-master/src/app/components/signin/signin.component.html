@@ -9,7 +9,7 @@
                 <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
                     <div class="form-group">
                         <label class="control-label">Username</label>
-                        <input type="text" formControlName="username" placeholder="example@gmail.com" title="Please enter you username" class="form-control">
+                        <input type="text" formControlName="username" placeholder="user" title="Please enter you username" class="form-control">
                         <div *ngIf="loginForm.get('username')?.hasError('required') 
                                 && loginForm.get('username')?.touched; else validUser">
                             <div class="text-danger">

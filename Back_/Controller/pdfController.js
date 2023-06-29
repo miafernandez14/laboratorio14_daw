@@ -10,7 +10,7 @@ exports.generarPDf = async(req,res) =>{
         const nombreArchivo = 'reporte.pdf';
         const doc = new jsPDF();
 
-        const nombreSocio = socios[0].nombre; // Suponiendo que solo hay un socio
+        const nombreSocio = socios[0].username; // Suponiendo que solo hay un socio
         doc.setFontSize(20);
         doc.text(nombreSocio, 20, 20);
 
@@ -21,7 +21,7 @@ exports.generarPDf = async(req,res) =>{
         theme: 'grid',
         startY: 30,
         head: [[`Socios (${socios.length})`, 'Direccion', 'telefono', 'Fecha de Creación', 'Director Favorito']],
-        body: socios.map(socio => [socio.nombre, socio.direccion, socio.telefono, socio.fechaCreacion, socio.directorFavorito])
+        body: socios.map(socio => [socio.username, socio.direccion, socio.telefono, socio.fechaCreacion, socio.directorFavorito])
         });
 
       
