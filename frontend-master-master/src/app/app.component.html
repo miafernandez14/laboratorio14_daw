@@ -10,6 +10,7 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/tasks" routerLinkActive="active">Tasks</a>
         </li>
+        <ng-template #loggedIn>
         <li class="nav-item">
           <a class="nav-link" routerLink="/peliculas" routerLinkActive="active">Peliculas</a>
         </li>
@@ -20,19 +21,22 @@
           <a class="nav-link" routerLink="/socios" routerLinkActive="active">Socios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/prestamo_done" routerLinkActive="active">Done</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" routerLink="/prestamo_devueltos" routerLinkActive="active">Devueltos</a>
         </li>
+        <li class="nav-item me-2">
+          <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()">Logout</a>
+        </li>
+        </ng-template>
       </ul>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/signin" routerLinkActive="active">SignIn</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/signup" routerLinkActive="active">SignUp</a>
-        </li>
+      <ul class="navbar-nav">
+        <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/signin" routerLinkActive="active">SignIn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/signup" routerLinkActive="active">SignUp</a>
+          </li>
+        </ng-container>
       </ul>
     </div>
   </div>
